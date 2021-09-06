@@ -1,0 +1,39 @@
+import random 
+score = 0
+
+wordlist1 = ["hot", "summer", "hard", "dry", "simple", "light", "weak", "male", "sad", "win", "small", "ignore", "buy", "succeed", "reject", "prevent", "exclude"]
+
+
+wordlist2 = ["cold", "winter", "soft", "wet", "complex", "darkness", "strong", "female", "happy", "lose", "big", "pay attention", "sell", "fail", "accept", "allow", "include"]
+
+
+
+
+
+d = {i : j for (i,j) in zip(wordlist1, wordlist2)}
+
+def makeQuestion():
+    score = 0
+    a = random.choice(list(d.items()))
+    del d[a[0]]
+    b = random.choice(list(d.items()))
+    
+
+    ans = input("{} is to {} as {} is to___? ".format(a[0], a[1], b[0]))
+    if ans.strip().lower() == b[1]:
+       print (True)
+       score+=1 
+      
+       del d[b[0]]
+    else:
+       print (False)
+       score-=1
+       
+
+       
+       
+
+for x in range (10):
+    makeQuestion()
+
+print("your score is", str(score))
